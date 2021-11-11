@@ -117,7 +117,8 @@ module.exports = function (baseConfig) {
 				}),
 				globals(),
 				...rollupConfig.plugins.filter(
-					({ name }) => !['babel', 'package-type'].includes(name)
+					({ name }) =>
+						!['babel', 'package-type', 'types'].includes(name)
 				)
 			],
 			output: {

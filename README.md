@@ -53,7 +53,7 @@ Callback which should return key with which to group array.
 | -------- | -------- | ------------------------- |
 | `value`  | `any`    | Current iteration value.  |
 | `index`  | `number` | Current iteration index.  |
-| `array`  | `array`  | Original array reference. |
+| `array`  | `any[]`  | Original array reference. |
 
 ## Browser support
 

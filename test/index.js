@@ -1,6 +1,11 @@
 import assert from 'assert';
 import groupBy from '../index';
 
+/**
+ * @template T
+ * @typedef {import('../index').Callback<T>} Callback
+ */
+
 before(function () {
 	window.fixture.load('/test/fixtures/index.html');
 });
@@ -12,7 +17,12 @@ after(function () {
 it('handles simple array', function () {
 	const array = [1];
 	const context = {};
-	groupBy.call(context, array, function (...arguments_) {
+	/**
+	 * @template T
+	 * @type  {Callback<T>}
+	 * @this {typeof context}
+	 */
+	function callback(...arguments_) {
 		const [value, key, that] = arguments_;
 		assert.equal(
 			arguments_.length,
@@ -23,7 +33,9 @@ it('handles simple array', function () {
 		assert.equal(key, 0, 'Correct index in callback');
 		assert.equal(that, array, 'Correct link to array in callback');
 		assert.equal(this, context, 'Correct callback context');
-	});
+		return '';
+	}
+	groupBy.call(context, array, callback);
 });
 
 it('handles complex arrays', function () {
@@ -49,6 +61,8 @@ it('handles complex arrays', function () {
 });
 
 it('handles invalid arguments', function () {
+	// @ts-ignore
 	assert.throws(() => groupBy(null, () => {}), TypeError);
+	// @ts-ignore
 	assert.throws(() => groupBy([], null), TypeError);
 });
