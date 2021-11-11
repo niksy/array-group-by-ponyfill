@@ -3,7 +3,10 @@
 [![Build Status][ci-img]][ci]
 [![Browser testing by BrowserStack][browserstack-img]][browserstack]
 
-`Array.prototype.groupBy` ponyfill.
+[`Array.prototype.groupBy`](https://github.com/tc39/proposal-array-grouping)
+[ponyfill](https://ponyfill.com).
+
+> A proposal to make grouping of items in an array easier.
 
 ## Install
 
@@ -14,79 +17,43 @@ npm install array-group-by --save
 ## Usage
 
 ```js
-// Module usage
+import groupBy from 'array-group-by';
+
+groupBy([1, 2, 3, 4, 5], (value) => (value % 2 === 0 ? 'even' : 'odd'));
+
+// { odd: [1, 3, 5], even: [2, 4] }
 ```
 
-More usage examples.
+You can **use named export `preferNative` if you wish to use native
+implementation if it’s available**. In all other cases, ponyfill will be used.
+Beware of
+[caveats](https://github.com/sindresorhus/ponyfill#user-content-ponyfill:~:text=Ponyfills%20should%20never%20use%20the%20native,between%20environments%2C%20which%20can%20cause%20bugs.)!
 
 ## API
 
-### methodName(arg, [optionalArg])
+### groupBy(array, callback)
 
-Returns: `Mixed`
+Returns: `Array`
 
-Method description.
+Group array items.
 
-#### arg
+#### array
 
-Type: `Mixed`
+Type: `Array`
 
-arg description.
+Array to group.
 
-#### optionalArg
+#### callback
 
-Type: `Object`
+Type: `Function`
 
-optionalArg description.
+Callback which should return key with which to group array.
 
-##### prop1
-
-Type: `String`  
-Default: `'3'`
-
-`prop1` description.
-
-##### prop2
-
-Type: `Number`  
-Default: `3`
-
-##### prop3
-
-Type: `Number[]`  
-Default: `[1, 2, 3]`
-
-##### prop4
-
-Type: `Number[]` `String[]`  
-Default: `['1', '2', '3']`
-
-`prop4` description.
-
-##### prop5
-
-Type: `Function`  
-Default: `noop`
-
-`prop5` description.
-
-Function arguments:
-
--   **arg1** `String` arg1 description
--   **arg2** `Number` arg2 description
--   **arg3** `Element` `Boolean` arg3 description
-
-> Alternative approach
-
-| Property | Type                  | Default           | Description                                              |
-| -------- | --------------------- | ----------------- | -------------------------------------------------------- |
-| `prop1`  | `String`              | `'3'`             | `prop1` description.                                     |
-| `prop2`  | `Number`              | `3`               | `prop2` description.                                     |
-| `prop3`  | `Number[]`            | `[1, 2, 3]`       | `prop3` description.                                     |
-| `prop4`  | `Number[]` `String[]` | `['1', '2', '3']` | `prop4` description.                                     |
-| `prop5`  | `Function`            | `noop`            | `prop5` description. (No function arguments description) |
-
----
+| Argument | Type     | Description               |
+| -------- | -------- | ------------------------- |
+| `value`  | `any`    | Current iteration value.  |
+| `index`  | `number` | Current iteration index.  |
+| `array`  | `array`  | Original array reference. |
 
 ## Browser support
 
@@ -94,6 +61,10 @@ Tested in Chrome 72, Edge 15, Firefox 65 and should work in all modern browsers
 ([support based on Browserslist configuration](https://browserslist.dev/?q=bGFzdCAzIG1ham9yIHZlcnNpb25zLCBzaW5jZSAyMDE5LCBlZGdlID49IDE1LCBub3QgaWUgPiAw)).
 
 ## Test
+
+Test suite is taken and modified from
+[core-js](https://github.com/zloirock/core-js/blob/master/tests/tests/esnext.array.group-by.js)
+test suite.
 
 For automated tests, run `npm run test:automated` (append `:watch` for watcher
 support).
