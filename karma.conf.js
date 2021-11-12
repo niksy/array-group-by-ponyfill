@@ -75,11 +75,10 @@ if (local) {
 module.exports = function (baseConfig) {
 	baseConfig.set({
 		basePath: '',
-		frameworks: ['mocha', 'fixture'],
-		files: ['test/**/*.html', { pattern: 'test/**/*.js', watched: false }],
+		frameworks: ['mocha'],
+		files: [{ pattern: 'test/**/*.js', watched: false }],
 		exclude: [],
 		preprocessors: {
-			'test/**/*.html': ['html2js'],
 			'test/**/*.js': ['rollup', 'sourcemap']
 		},
 		reporters: ['mocha', 'coverage'],

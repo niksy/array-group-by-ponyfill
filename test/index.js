@@ -6,14 +6,6 @@ import groupBy from '../index';
  * @typedef {import('../index').Callback<T>} Callback
  */
 
-before(function () {
-	window.fixture.load('/test/fixtures/index.html');
-});
-
-after(function () {
-	window.fixture.cleanup();
-});
-
 it('handles simple array', function () {
 	const array = [1];
 	const context = {};
