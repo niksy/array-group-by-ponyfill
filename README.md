@@ -33,13 +33,13 @@ Beware of
 
 ### groupBy(array, callback)
 
-Returns: `Array`
+Returns: `object`
 
 Group array items.
 
 #### array
 
-Type: `Array`
+Type: `any[]`
 
 Array to group.
 

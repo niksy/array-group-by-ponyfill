@@ -1,20 +1,10 @@
 import assert from 'assert';
 import groupBy from '../index';
 
-/**
- * @template T
- * @typedef {import('../index').Callback<T>} Callback
- */
-
 it('handles simple array', function () {
 	const array = [1];
 	const context = {};
-	/**
-	 * @template T
-	 * @type  {Callback<T>}
-	 * @this {typeof context}
-	 */
-	function callback(...arguments_) {
+	groupBy.call(context, array, function (...arguments_) {
 		const [value, key, that] = arguments_;
 		assert.equal(
 			arguments_.length,
@@ -24,10 +14,10 @@ it('handles simple array', function () {
 		assert.equal(value, 1, 'Correct value in callback');
 		assert.equal(key, 0, 'Correct index in callback');
 		assert.equal(that, array, 'Correct link to array in callback');
+		// @ts-ignore
 		assert.equal(this, context, 'Correct callback context');
 		return '';
-	}
-	groupBy.call(context, array, callback);
+	});
 });
 
 it('handles complex arrays', function () {
