@@ -1,5 +1,5 @@
 {
-  "name": "array-group-by",
+  "name": "array-group-by-ponyfill",
   "version": "0.0.0",
   "description": "`Array.prototype.groupBy` ponyfill.",
   "license": "MIT",
@@ -29,7 +29,7 @@
     "build": "rollup --config rollup.config.js",
     "lint": "eslint '{index,lib/**/*,test/**/*}.js'",
     "lint:types": "tsc",
-    "module-check": "node -e 'require(\"array-group-by\");' && node --input-type=module -e 'import \"array-group-by\";'",
+    "module-check": "node -e 'require(\"array-group-by-ponyfill\");' && node --input-type=module -e 'import \"array-group-by-ponyfill\";'",
     "prepublishOnly": "npm run build",
     "postpublish": "GITHUB_TOKEN=$GITHUB_RELEASE_TOKEN github-release-from-changelog",
     "prerelease": "npm run lint && npm run lint:types && npm run build && npm run module-check",
@@ -98,10 +98,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/niksy/array-group-by.git"
+    "url": "git+https://github.com/niksy/array-group-by-ponyfill.git"
   },
   "bugs": {
-    "url": "https://github.com/niksy/array-group-by/issues"
+    "url": "https://github.com/niksy/array-group-by-ponyfill/issues"
   },
-  "homepage": "https://github.com/niksy/array-group-by#readme"
+  "homepage": "https://github.com/niksy/array-group-by-ponyfill#readme"
 }

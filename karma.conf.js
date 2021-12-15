@@ -32,14 +32,14 @@ if (local) {
 			username: process.env.BROWSER_STACK_USERNAME,
 			accessKey: process.env.BROWSER_STACK_ACCESS_KEY,
 			startTunnel: true,
-			project: 'array-group-by',
+			project: 'array-group-by-ponyfill',
 			name: 'Automated (Karma)',
 			build: 'Automated (Karma)'
 		},
 		customLaunchers: {
 			'BS-Chrome': {
 				'base': 'BrowserStack',
-				'project': 'array-group-by',
+				'project': 'array-group-by-ponyfill',
 				'build': 'Automated (Karma)',
 				'browser': 'Chrome',
 				'browser_version': '72',
@@ -49,7 +49,7 @@ if (local) {
 			},
 			'BS-Edge': {
 				'base': 'BrowserStack',
-				'project': 'array-group-by',
+				'project': 'array-group-by-ponyfill',
 				'build': 'Automated (Karma)',
 				'browser': 'Edge',
 				'browser_version': '15',
@@ -59,7 +59,7 @@ if (local) {
 			},
 			'BS-Firefox': {
 				'base': 'BrowserStack',
-				'project': 'array-group-by',
+				'project': 'array-group-by-ponyfill',
 				'build': 'Automated (Karma)',
 				'browser': 'Firefox',
 				'browser_version': '65',
@@ -122,7 +122,7 @@ module.exports = function (baseConfig) {
 			],
 			output: {
 				format: 'iife',
-				name: 'arrayGroupBy',
+				name: 'arrayGroupByPonyfill',
 				sourcemap: baseConfig.autoWatch ? false : 'inline', // Source map support has weird behavior in watch mode
 				intro: 'window.TYPED_ARRAY_SUPPORT = false;' // IE9
 			}
