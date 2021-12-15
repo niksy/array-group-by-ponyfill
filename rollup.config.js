@@ -12,7 +12,7 @@ module.exports = {
 		{
 			file: 'cjs/index.js',
 			format: 'cjs',
-			exports: 'auto',
+			exports: 'named',
 			sourcemap: true
 		},
 		{

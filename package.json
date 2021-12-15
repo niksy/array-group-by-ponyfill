@@ -37,7 +37,7 @@
     "test": "npm run test:automated",
     "test:automated": "BABEL_ENV=test karma start",
     "test:automated:watch": "npm run test:automated -- --auto-watch --no-single-run",
-    "version": "if [ $(git rev-parse --abbrev-ref HEAD) == 'master' ]; then version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md; else echo; fi"
+    "version": "if [ $(git rev-parse --abbrev-ref HEAD) == 'master' ]; then sed -i '' '/\\[unreleased\\]:/d' CHANGELOG.md && version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md; else echo; fi"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -78,7 +78,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "lint-staged": "^10.4.2",
     "mocha": "^8.2.0",
-    "np": "^6.5.0",
+    "np": "^7.6.0",
     "prettier": "^2.4.0",
     "rollup": "^2.32.1",
     "rollup-plugin-istanbul": "^3.0.0",
